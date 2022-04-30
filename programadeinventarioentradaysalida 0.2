@@ -1,0 +1,77 @@
+Algoritmo programadeinventarioentradaysalida 
+	definir producto Como Caracter
+	definir cantidad, Cant Como Entero
+	definir respuesta, Nom, Tip, put Como Caracter
+	definir i, k, l, indice, Cantot Como Entero
+	definir encontrado Como Logico
+	Dimension producto(1000)
+	Dimension cantidad(1000)
+	k = 0
+	indice = 0
+	
+	repetir 
+		escribir "====== NUEVO MOVIMIENTO ======="
+		escribir "Nombre del producto:"
+		leer Nom
+		Escribir "Marca:"
+		leer put 
+		escribir "Cantidad"
+		leer Cant
+		escribir "Que tipo de movimiento va a realizar (E=Entrada/S=Salida):"
+		leer Tip
+		// determina la existencia del item 
+		i = 1
+		encontrado = falso 
+		Mientras ( i <= k) hacer 
+			si (producto(i) = Nom) Entonces
+				encontrado = Verdadero
+				indice = i
+			FinSi
+			i = i + 1
+		FinMientras
+		
+		si no encontrado entonces 
+			si Tip = "E" Entonces
+				k = k + 1
+				producto(k) = Nom 
+				cantidad(k) = Cant
+			SiNo
+				escribir "Este producto no existe:"
+			FinSi
+		sino 
+			si Tip = "E" entonces 
+				cantidad(indice) = cantidad(indice) + Cant
+			SiNo
+				Cantot = cantidad(indice)
+				si (Cantot >= Cant) Entonces
+					cantidad(indice) = cantidad(indice) - Cant
+				sino
+					Escribir " El numero de items existentes es menor a la solicitada:"
+					Escribir " Es menor a la solicitada :"
+					escribir " existen:", Cantot, "unidades:"
+				FinSi
+			FinSi
+		FinSi
+		
+		escribir "********** INVENTARIO ACTUAL *********"
+		l = 1
+		Mientras (l <= k) Hacer
+			Escribir "Producto : ", producto(l), ", cantidad : ", cantidad(l)
+			l = l + 1
+		FinMientras
+		
+		escribir " desea otro movimiento (S/N):"
+		Repetir
+			leer respuesta
+			si (respuesta <> "S" y respuesta <> "N") Entonces
+				Escribir "Selecciones S o N para seguir:"
+			FinSi
+		Hasta Que (respuesta = "S" o respuesta = "N")
+	Hasta Que (respuesta <> "S")
+	
+	Escribir "FIN DE LAS TRANSACCIONES!!!!"
+	Escribir  ""
+	Escribir "******* INVENTARIO FINAL ********:"
+	Imprimir " Sahony Romero Encarnacion 21-EIEN-1-002:"
+
+FinAlgoritmo
